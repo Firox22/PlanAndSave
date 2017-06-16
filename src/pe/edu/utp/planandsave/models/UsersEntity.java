@@ -71,4 +71,19 @@ public class UsersEntity extends BaseEntity{
                     user.getUserCategory().getIdAsString() + ")";
         return change(sql);
     }
+
+    /*
+    public boolean add(User user){
+        String sql = "INSERT INTO users(id, first_name, last_name, email, password, salary, user_category_id)" +
+                " VALUES(" +
+                    user.getIdAsString() + ", " +
+                    user.getFirstNameAsValue() + ", " +
+                    user.getLastNameAsValue() + ", " +
+                    user.getEmailAsValue() + ", " +
+                    user.getPasswordAsValue() + ", " +
+                    user.getSalaryAsString() + ", " +
+                    user.getUserCategory().getIdAsString() + ")";
+        return change(sql);
+    }
+    */
 }
