@@ -25,20 +25,20 @@ public class CurrenciesEntity extends BaseEntity {
     public Currency findById(int id){
         String criteria = " id = " + String.valueOf(id);
         return findByCriteria(criteria).get(0);
+    }
 
-        public List<Currency> findByCriteria(String criteria){
+    public List<Currency> findByCriteria(String criteria){
         String sql = getDefaultQuery() + criteria == "" ? "" : " WHERE " + criteria;
         List<Currency> currencies = new ArrayList<>();
         try {
             ResultSet resultSet = getConnection().createStatement().executeQuery(sql);
             if (resultSet == null) return null;
             while (resultSet.next()){
-                currencies.add(UserCategory.build(resultSet));
+                currencies.add(Currency.build(resultSet));
             }
-            return currencies;
+            return userCategories;
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
-}
