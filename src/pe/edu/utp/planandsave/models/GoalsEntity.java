@@ -47,7 +47,7 @@ public class GoalsEntity extends BaseEntity{
             while (resultSet.next()){
                 goals.add(Goal.build(resultSet, usersEntity, currenciesEntity));
             }
-            return users;
+            return goals;
         } catch (SQLException e) {
             e.printStackTrace();
         }

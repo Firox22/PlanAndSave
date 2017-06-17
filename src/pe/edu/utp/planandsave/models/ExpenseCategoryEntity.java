@@ -9,34 +9,39 @@ import java.util.List;
 /**
  * Created by Abraham on 17/06/2017.
  */
-public class CurrenciesEntity extends BaseEntity {
+public class ExpenseCategoryEntity extends BaseEntity {
 
-    public CurrenciesEntity(Connection connection) {
-        super(connection, "currencies");
+    public ExpenseCategoryEntity(Connection connection) {
+        super(connection, "expense_category");
     }
 
-    public CurrenciesEntity() {
+    public ExpenseCategoryEntity() {
     }
 
-    List<Currency> findAll() {
+    List<ExpenseCategory> findAll(){
         return findByCriteria("");
     }
 
-    public Currency findById(int id) {
+    public ExpenseCategory findById(int id){
         String criteria = " id = " + String.valueOf(id);
         return findByCriteria(criteria).get(0);
     }
 
-    public List<Currency> findByCriteria(String criteria) {
+    public ExpenseCategory findByName(String name){
+        String criteria = " name = '" + name + "'";
+        return findByCriteria(criteria).get(0);
+    }
+
+    public List<ExpenseCategory> findByCriteria(String criteria){
         String sql = getDefaultQuery() + criteria == "" ? "" : " WHERE " + criteria;
-        List<Currency> currencies = new ArrayList<>();
+        List<ExpenseCategory> expenseCategories = new ArrayList<>();
         try {
             ResultSet resultSet = getConnection().createStatement().executeQuery(sql);
             if (resultSet == null) return null;
-            while (resultSet.next()) {
-                currencies.add(Currency.build(resultSet));
+            while (resultSet.next()){
+                expenseCategories.add(ExpenseCategory.build(resultSet));
             }
-            return currencies;
+            return expenseCategories;
         } catch (SQLException e) {
             e.printStackTrace();
         }
