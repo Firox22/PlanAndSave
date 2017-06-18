@@ -113,7 +113,7 @@ public class Debt {
 
     public static Debt build(ResultSet resultSet, CurrenciesEntity currenciesEntity, ExpenseCategoryEntity expenseCategoryEntity, UsersEntity usersEntity){
         try {
-            return (new User())
+            return (new Debt())
                     .setId(resultSet.getInt("id"))
                     .setDescription(resultSet.getString("description"))
                     .setPayment_period(resultSet.getString("payment_period"))
